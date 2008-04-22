@@ -1,0 +1,24 @@
+DESCRIPTION="GNU utility for converting files between character sets"
+HOMEPAGE="http://recode.progiciels-bpi.ca/"
+SRC_URI="http://recode.progiciels-bpi.ca/archives/${P/_/-}.tar.gz"
+SRC_DIR="${P/_/-}"
+
+abi=0
+PKG_NAMES="${PN} lib${PN}${abi} lib${PN}-devel"
+PKG_HINTS="setup lib devel"
+PKG_CONTENTS[0]="etc/ usr/bin/${PN}.exe usr/share/"
+PKG_CONTENTS[1]="usr/bin/*-${abi}.dll"
+PKG_CONTENTS[2]="usr/include/ usr/lib/"
+
+DIFF_EXCLUDES="m4 ansi2knr.c recode.1 stamp-strip"
+
+WANT_AUTOMAKE=1.10
+
+src_compile() {
+	cd ${S}
+	./aclocal.sh aclocal -I m4 -I /usr/share/aclocal-${WANT_AUTOMAKE} || error "aclocal.sh failed"
+	NO_ACLOCAL=1 cygautoreconf
+	cd ${B}
+	cygconf
+	cygmake
+}
