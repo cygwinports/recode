@@ -1,5 +1,5 @@
 category: Text
-requires: cygwin libintl8 librecode0
+requires: libintl8 librecode0
 sdesc: "Character set converter (CLI)"
 ldesc: "The Recode library converts files between character sets and 
 usages. It recognises or produces over 200 different character sets (or 

@@ -1,5 +1,5 @@
 category: Text
-requires: cygwin libiconv gettext librecode0
+requires: libiconv gettext librecode0
 external-source: recode
 sdesc: "Character set converter (libdevel)"
 ldesc: "The Recode library converts files between character sets and 
